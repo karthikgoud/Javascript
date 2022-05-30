@@ -10,39 +10,45 @@
 
 <body>
 
+    <input id="input-text" type="text">
+
+    <button onclick="addTodo()">Add Todo</button>
+
+    <div id="todo-list"></div>
 
     <script>
-
-        //variables
-        let todo1 = 'read a book';
-        let todo2 = 'Make dinner';
-        let todo3 = 'wash car';
-
-        //print todo in body/DOM
-
-        // let element = document.createElement('div');
-        // element.innerText = todo1;
-        // document.body.appendChild(element);
 
         //arrays
 
         let todos = ['read a book', 'make dinner', 'wash car', '4th todo'];
 
-        //loops forEach()
+        render();
 
-        todos.forEach(function (elem) {
-            addToDom(elem);
-        })
+        //onclick take input and add to todos array
+        function addTodo() {
+            //reset page
 
+            let textbox = document.getElementById('input-text');
+            let inputValue = textbox.value;
+            todos.push(inputValue);
+            console.log(todos)
 
+            render();
+        }
 
         // function for reusing the code
 
-        function addToDom(todoTitle) {
-            let element = document.createElement('div');
-            element.innerText = todoTitle;
-            document.body.appendChild(element);
+        function render() {
+            document.getElementById('todo-list').innerHTML = '';
+
+            todos.forEach(function (todoTitle) {
+                let element = document.createElement('div');
+                element.innerText = todoTitle;
+                document.getElementById('todo-list').appendChild(element);
+            })
+
         }
+
 
         //calling a function
         // addToDom(todo1)
