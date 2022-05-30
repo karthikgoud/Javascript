@@ -22,22 +22,40 @@
 
         //arrays
 
-        const todos = [{
+        let todos = [{
             title: 'read a book',
-            dueDate: '2022-09-23'
+            dueDate: '2022-09-23',
+            id: 'id1'
         }, {
             title: 'make dinner',
-            dueDate: '2022-03-15'
+            dueDate: '2022-03-15',
+            id: 'id2'
         }, {
             title: 'wash car',
-            dueDate: '2022-07-23'
+            dueDate: '2022-07-23',
+            id: 'id3'
         }];
 
         render();
 
-        function deleteTodo() {
-            console.log('deleted');
+        //delete todo function
+
+        function deleteTodo(event) {
+            const deleteButton = event.target.id;
+            // const isToDelete = deleteButton.id;
+
+            todos = todos.filter(function (todo) {
+                if (deleteButton === todo.id) {     // return true keep , false delete from todos
+                    return false;
+                } else {
+                    return true;
+                }
+            })
+
+            render();
+
         }
+
 
         //onclick take input and add to todos array
         function addTodo() {
@@ -46,9 +64,13 @@
             const inputValue = textbox.value;
             const datePicker = document.getElementById('date-picker');
             const dueDate = datePicker.value
+
+            const id = "" + new Date().getTime();
+
             todos.push({
                 title: inputValue,
-                dueDate: dueDate
+                dueDate: dueDate,
+                id: id
             });
 
             render();
@@ -67,13 +89,16 @@
                 const deleteButton = document.createElement('button');
                 deleteButton.innerText = 'Delete';
                 deleteButton.style = 'margin-left : 20px';
-                deleteButton.onclick = deleteTodo;
+                deleteButton.onclick = deleteTodo; // run deleteTod function
+                deleteButton.id = todo.id; // make todo id as button id
                 element.appendChild(deleteButton);
 
                 document.getElementById('todo-list').appendChild(element);
             })
 
         }
+
+
 
 
         //calling a function
