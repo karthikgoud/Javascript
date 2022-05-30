@@ -14,14 +14,27 @@
     <script>
 
         //variables
-        let todo1 = 'read books';
+        let todo1 = 'read a book';
         let todo2 = 'Make dinner';
+        let todo3 = 'wash car';
 
         //print todo in body/DOM
 
-        let element = document.createElement('div');
-        element.innerText = todo1;
-        document.body.appendChild(element);
+        // let element = document.createElement('div');
+        // element.innerText = todo1;
+        // document.body.appendChild(element);
+
+        //arrays
+
+        let todos = ['read a book', 'make dinner', 'wash car', '4th todo'];
+
+        //loops forEach()
+
+        todos.forEach(function (elem) {
+            addToDom(elem);
+        })
+
+
 
         // function for reusing the code
 
@@ -32,7 +45,9 @@
         }
 
         //calling a function
-        addToDom(todo2)
+        // addToDom(todo1)
+        // addToDom(todo2)
+        // addToDom(todo3)
 
 
     </script>
