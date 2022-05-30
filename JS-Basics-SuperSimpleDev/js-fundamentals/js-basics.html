@@ -23,6 +23,18 @@
         element.innerText = todo1;
         document.body.appendChild(element);
 
+        // function for reusing the code
+
+        function addToDom(todoTitle) {
+            let element = document.createElement('div');
+            element.innerText = todoTitle;
+            document.body.appendChild(element);
+        }
+
+        //calling a function
+        addToDom(todo2)
+
+
     </script>
 </body>
 
